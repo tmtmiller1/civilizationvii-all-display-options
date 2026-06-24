@@ -1,0 +1,1 @@
+Fixes the annoying display changes 1.4.1 brought, especially on Mac, where the UI now looks "zoomed in" with fewer resolutions and a clamped scale slider. Restores every resolution up to your panel's native, the engine's full 50–200% UI scale, an auto-scale toggle, and one-click device-aware presets, all under the Mods options category, applied on Confirm.

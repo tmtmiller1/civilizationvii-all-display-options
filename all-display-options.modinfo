@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Mod id="all-display-options" version="1" xmlns="ModInfo">
+    <Properties>
+        <Name>LOC_MOD_ALL_DISPLAY_OPTIONS_NAME</Name>
+        <Description>LOC_MOD_ALL_DISPLAY_OPTIONS_DESCRIPTION</Description>
+        <Authors>Tower</Authors>
+        <Package>AllDisplayOptionsMod</Package>
+        <PackageSortIndex>1000</PackageSortIndex>
+        <Version>1.0.0</Version>
+    </Properties>
+    <Dependencies>
+        <Mod id="base-standard" title="LOC_MODULE_BASE_STANDARD_NAME" />
+    </Dependencies>
+    <ActionCriteria>
+        <Criteria id="always">
+            <AlwaysMet></AlwaysMet>
+        </Criteria>
+    </ActionCriteria>
+    <ActionGroups>
+        <!-- Shell scope: the Options screen on the main menu. -->
+        <ActionGroup id="all-display-options-shell" scope="shell" criteria="always">
+            <Properties>
+                <LoadOrder>60</LoadOrder>
+            </Properties>
+            <Actions>
+                <UpdateText>
+                    <Item>text/en_us/ModText.xml</Item>
+                </UpdateText>
+                <UIScripts>
+                    <Item>ui/all-display-options-mod-options.js</Item>
+                    <Item>ui/all-display-options.js</Item>
+                </UIScripts>
+                <ImportFiles>
+                    <Item>ui/all-display-options-mod-options.js</Item>
+                    <Item>ui/all-display-options.js</Item>
+                </ImportFiles>
+            </Actions>
+        </ActionGroup>
+        <!-- Game scope: the in-game pause-menu Options screen. -->
+        <ActionGroup id="all-display-options-game" scope="game" criteria="always">
+            <Properties>
+                <LoadOrder>60</LoadOrder>
+            </Properties>
+            <Actions>
+                <UpdateText>
+                    <Item>text/en_us/ModText.xml</Item>
+                </UpdateText>
+                <UIScripts>
+                    <Item>ui/all-display-options-mod-options.js</Item>
+                    <Item>ui/all-display-options.js</Item>
+                </UIScripts>
+                <ImportFiles>
+                    <Item>ui/all-display-options-mod-options.js</Item>
+                    <Item>ui/all-display-options.js</Item>
+                </ImportFiles>
+            </Actions>
+        </ActionGroup>
+    </ActionGroups>
+    <LocalizedText>
+        <File>text/en_us/ModText.xml</File>
+    </LocalizedText>
+</Mod>
