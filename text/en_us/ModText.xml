@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Database>
+    <EnglishText>
+        <Row Tag="LOC_MOD_ALL_DISPLAY_OPTIONS_NAME">
+            <Text>All Display and Resolution Options</Text>
+        </Row>
+        <Row Tag="LOC_MOD_ALL_DISPLAY_OPTIONS_DESCRIPTION">
+            <Text>Restores display choices the game hides: every resolution up to your panel's native, the engine's full UI scale range (50-200%), an auto-scale toggle, and one-click device-aware presets to get the "more zoomed out" look back.</Text>
+        </Row>
+
+        <!-- Group header (LOC_OPTIONS_GROUP_ + group id, uppercased) -->
+        <Row Tag="LOC_OPTIONS_GROUP_ALLDISPLAYOPTIONS">
+            <Text>All Display and Resolution Options</Text>
+        </Row>
+
+        <!-- Preset dropdown -->
+        <Row Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET">
+            <Text>Display preset</Text>
+        </Row>
+        <Row Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET_INFO">
+            <Text>One-click presets tuned to your display. Pick one, then press Confirm. The other controls below update the next time you open Options.</Text>
+        </Row>
+        <!-- Runtime tooltip: {1_Display} = detected native resolution, {2_Scale} = recommended UI %. -->
+        <Row Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET_DETECTED">
+            <Text>Detected display: {1_Display}. Recommended for "more zoomed out": native resolution at {2_Scale}% UI scale. Apply a preset, then Confirm.</Text>
+        </Row>
+        <Row Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET_CURRENT">
+            <Text>Current (no change)</Text>
+        </Row>
+        <Row Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET_RECOMMENDED">
+            <Text>Recommended for this display</Text>
+        </Row>
+        <Row Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET_MAX_ZOOM">
+            <Text>Maximum zoom-out (native, 60% UI)</Text>
+        </Row>
+        <Row Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET_DEFAULT">
+            <Text>Game default (100% UI, auto-scale on)</Text>
+        </Row>
+
+        <!-- Resolution dropdown -->
+        <Row Tag="LOC_ALL_DISPLAY_OPTIONS_RESOLUTION">
+            <Text>Resolution (all modes)</Text>
+        </Row>
+        <Row Tag="LOC_ALL_DISPLAY_OPTIONS_RESOLUTION_INFO">
+            <Text>Every standard resolution up to your display's native size, including modes the base game's dropdown leaves out. Higher resolution = more of the map on screen ("more zoomed out"). Takes effect on Confirm.</Text>
+        </Row>
+
+        <!-- Global UI scale slider -->
+        <Row Tag="LOC_ALL_DISPLAY_OPTIONS_UI_SCALE">
+            <Text>Global UI scale</Text>
+        </Row>
+        <Row Tag="LOC_ALL_DISPLAY_OPTIONS_UI_SCALE_INFO">
+            <Text>Size of the whole interface from 50% to 200% (the engine's full range; the built-in slider only reaches 50-125%). Lower = smaller HUD and more visible map. Setting this turns auto-scale off so the value is honoured. Takes effect on Confirm.</Text>
+        </Row>
+
+        <!-- Auto-scale toggle -->
+        <Row Tag="LOC_ALL_DISPLAY_OPTIONS_AUTO_SCALE">
+            <Text>UI auto-scale</Text>
+        </Row>
+        <Row Tag="LOC_ALL_DISPLAY_OPTIONS_AUTO_SCALE_INFO">
+            <Text>When on, the game auto-sizes the UI for your display (the post-patch behaviour that can look "zoomed in"). Turn it off to control size yourself with Global UI scale above.</Text>
+        </Row>
+    </EnglishText>
+</Database>

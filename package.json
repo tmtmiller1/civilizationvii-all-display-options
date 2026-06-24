@@ -1,0 +1,21 @@
+{
+  "name": "all-display-options-mod-dev",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Dev tooling for the Display Tweaks Civ VII mod. Not shipped — the mod is just the modinfo + ui/ + text/.",
+  "scripts": {
+    "check": "tsc --noEmit",
+    "lint": "eslint ui",
+    "test:options": "node --loader ./tests/loader.mjs tests/all-display-options.mjs",
+    "test:mod-options": "node --loader ./tests/loader.mjs tests/mod-options.mjs",
+    "test:js": "npm run test:options && npm run test:mod-options",
+    "coverage": "c8 npm run test:js",
+    "verify": "tsc --noEmit && eslint ui && c8 npm run test:js"
+  },
+  "devDependencies": {
+    "c8": "^11.0.0",
+    "eslint": "^9.0.0",
+    "typescript": "^5.4.0"
+  }
+}
