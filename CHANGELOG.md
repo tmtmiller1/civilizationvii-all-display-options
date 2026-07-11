@@ -7,6 +7,20 @@ generated from the matching section below by `release.sh`.
 
 ## [Unreleased]
 
+## [1.0.1] - 2026-07-06
+
+Maintenance release. No gameplay or options behavior changes — this is an
+internal code-quality pass following a full quality review of the mod.
+
+### Changed
+- Split the monolithic options module: extracted the pure resolution/scale helpers and engine-adapter layer into a new `all-display-options-core.js`, dropping the UI-wiring file from 336 to 169 lines with no runtime behavior change.
+- Registered `all-display-options-core.js` in both the shell- and game-scope import lists so the extracted module loads in every scope.
+
+### Quality
+- Test coverage held at 100% statements, branches, functions, and lines across all three shipped modules after the split.
+- `npm run verify` (tsc type-check + eslint + 100% coverage gate) passes clean on the refactored code.
+- Documented the Steam publishedfileid persistence flow in the README so repeat uploads stay in update mode.
+
 ## [1.0.0] - 2026-06-25
 
 ### Added
