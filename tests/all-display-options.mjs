@@ -69,7 +69,9 @@ function registerWith(supported, graphicsResolution) {
 // ── 1. Rich display: multi-mode supported list (covers getNativeResolution best/>/!> branches,
 //      the filter dropping an invalid entry, native-tagging, the 1440p recommendation). ──────────
 let byId = registerWith(
-  { resolutions: [{ i: 1280, j: 720 }, { i: 2560, j: 1440 }, { i: 1920, j: 1080 }, { i: 0, j: 0 }] },
+  // 1920x1600 is within native's AREA but exceeds its HEIGHT (1440): it must be dropped by
+  // the per-dimension cap (an ultrawide/atypical-panel guard), not just the area cap.
+  { resolutions: [{ i: 1280, j: 720 }, { i: 2560, j: 1440 }, { i: 1920, j: 1080 }, { i: 1920, j: 1600 }, { i: 0, j: 0 }] },
   { i: 2560, j: 1440 }
 );
 const EXPECTED = [
@@ -94,6 +96,11 @@ assert.ok(
 assert.ok(
   !resOpt.dropdownItems.some((/** @type {*} */ it) => it.label.startsWith("3840")),
   "modes larger than native must be dropped"
+);
+assert.ok(
+  // label is "WIDTH x HEIGHT"; endsWith avoids matching width-1600 modes like "1600 x 900".
+  !resOpt.dropdownItems.some((/** @type {*} */ it) => String(it.label).endsWith("1600")),
+  "a mode within native's area but exceeding its height (1600 > 1440) must be dropped (per-dimension cap)"
 );
 
 // Resolution init: stored resolution that IS in the list selects its index.

@@ -26,4 +26,7 @@ npm run verify   # tsc --noEmit + eslint + 100% coverage gate
 ./release.sh     # build dist/ + Steam Workshop manifest
 ```
 
+The first Steam Workshop publish stores its `publishedfileid` in
+`steam_workshop_id.txt`, so later uploads stay in update mode.
+
 MIT licensed. Author: Tower.
