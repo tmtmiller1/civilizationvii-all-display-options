@@ -2,7 +2,7 @@
 
 Restores the display choices Civilization VII hides or clamps, as plain options under the [b]Mods[/b] category. No HUD takeover, no new windows, just the controls the game should have shipped, applied through the normal [b]Confirm[/b] button.
 
-[b]Why this exists (especially on Mac):[/b] The [b]1.4.1[/b] update changed how the game handles display scaling, and Mac players in particular got a small slate of resolution options. The interface now defaults to an auto-scale that looks [i]zoomed in[/i] on Retina/high-DPI panels, the resolution dropdown lost most of its useful modes, and the in-game UI-scale slider was clamped to a narrow 50–125%. There was to my knolwedge no clean way to just set your native resolution and shrink the HUD. This mod gives those controls back.
+[b]Why this exists (especially on Mac):[/b] The [b]1.4.1[/b] update changed how the game handles display scaling, and Mac players in particular got a small slate of resolution options. The interface now defaults to an auto-scale that looks [i]zoomed in[/i] on Retina/high-DPI panels, the resolution dropdown lost most of its useful modes, and the in-game UI-scale slider was clamped to a narrow 50–125%. There was to my knowledge no clean way to just set your native resolution and shrink the HUD. This mod gives those controls back.
 
 [b]What it adds:[/b]
 [list]
