@@ -1,4 +1,4 @@
-// Behavioural + full-coverage test for ui/all-display-options.js. The engine option API is the
+// Behavioral + full-coverage test for ui/all-display-options.js. The engine option API is the
 // recording stub (loader.mjs → stubs/engine-options-stub.mjs); the global engine singletons UI,
 // Configuration and Locale are installed on globalThis here. We drain the registration callback
 // under several display configurations and invoke every option's listeners (and every preset

@@ -138,7 +138,7 @@ function registerGlobalScale() {
 
 /**
  * Register the "UI auto-scale" checkbox toggling the engine's post-patch
- * auto-sizing (the behaviour that can look "zoomed in").
+ * auto-sizing (the behavior that can look "zoomed in").
  * @returns {void}
  */
 function registerAutoScale() {

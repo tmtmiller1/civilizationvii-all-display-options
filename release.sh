@@ -28,8 +28,8 @@ if [ "${SKIP_VERIFY:-0}" = "1" ]; then
 elif [ ! -d node_modules ]; then
     echo "release: node_modules missing, skipping verify. Run 'npm install' to enable the gate."
 else
-    echo "release: running 'npm run verify' (set SKIP_VERIFY=1 to skip)..."
-    npm run verify || { echo "release: 'npm run verify' FAILED, aborting."; exit 1; }
+    echo "release: running 'npm run release:gate' (set SKIP_VERIFY=1 to skip)..."
+    npm run release:gate || { echo "release: 'npm run release:gate' FAILED, aborting."; exit 1; }
 fi
 
 DIST_DIR="dist"
@@ -60,7 +60,7 @@ echo "==> Cleaning $DIST_DIR/"
 rm -rf "$DIST_DIR"; mkdir -p "$TARGET_DIR"
 
 echo "==> Mirroring → $TARGET_DIR/ (excluding dev cruft)"
-rsync -a --exclude='.git' --exclude='.gitignore' --exclude='.DS_Store' --exclude='dist' \
+rsync -a --exclude='CHANGELOG.steam.txt' --exclude='scripts' --exclude='reports' --exclude='.git' --exclude='.gitignore' --exclude='.DS_Store' --exclude='dist' \
     --exclude='release.sh' --exclude='*.bak' --exclude='node_modules' \
     --exclude='tsconfig.json' --exclude='jsconfig.json' --exclude='types' --exclude='docs' \
     --exclude='eslint.config.js' --exclude='package.json' --exclude='package-lock.json' \
@@ -106,13 +106,11 @@ VDF_PATH="$DIST_DIR/workshop_item.vdf"
 ABS_CONTENT="$(cd "$TARGET_DIR" && pwd)"
 ABS_PREVIEW=""; [ -f "$PREVIEW_OUT" ] && ABS_PREVIEW="$(cd "$DIST_DIR" && pwd)/preview.png"
 
-# Change note from the current CHANGELOG section (rendered as a Steam BBCode list).
-CHANGENOTE="v${VERSION} release."
-if [ -f CHANGELOG.md ]; then
-    BULLETS="$(awk -v ver="$VERSION" '$0 ~ ("^## \\[" ver "\\]"){g=1;next} g&&/^## /{exit} g{print}' CHANGELOG.md \
-        | sed -nE 's/^[[:space:]]*[-*][[:space:]]+(.*)$/[*]\1/p' | sed -E 's/\*\*//g; s/`//g' | tr '\n' ' ')"
-    [ -n "$BULLETS" ] && CHANGENOTE="$(printf '[list]%s[/list]' "$BULLETS" | sed -E 's/\\/\\\\/g; s/"/\\"/g')"
-fi
+# Change note: this release's block from CHANGELOG.steam.txt, which scripts/steam-changelog.mjs keeps in step with
+# CHANGELOG.md (that script documents Steam's change-note formatting rules). The block is VDF-safe: no straight
+# double quotes, no backslashes. Edit CHANGELOG.steam.txt to reword a note; a hand-edited block is kept.
+CHANGENOTE="$(node scripts/steam-changelog.mjs note "$VERSION")" \
+    || { echo "error: could not build the Steam change note (see above)"; exit 1; }
 
 {
     echo '"workshopitem"'
@@ -120,7 +118,8 @@ fi
     echo "    \"appid\"          \"$APPID\""
     [ -n "$PUBLISHED_FILE_ID" ] && echo "    \"publishedfileid\" \"$PUBLISHED_FILE_ID\""
     echo "    \"contentfolder\"  \"$ABS_CONTENT\""
-    [ -n "$ABS_PREVIEW" ] && echo "    \"previewfile\"    \"$ABS_PREVIEW\""
+    # "previewfile" is intentionally omitted: Steam rejects a preview image sent through steamcmd and the upload
+    # fails. Set the image by hand on the Workshop page (dist/preview.png is still rendered for that).
     echo "    \"visibility\"     \"0\""
     echo "    \"title\"          \"$TITLE\""
     # "description" is intentionally omitted: set it once on the Steam page from

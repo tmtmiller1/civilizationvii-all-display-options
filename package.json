@@ -11,7 +11,8 @@
     "test:mod-options": "node --loader ./tests/loader.mjs tests/mod-options.mjs",
     "test:js": "npm run test:options && npm run test:mod-options",
     "coverage": "c8 npm run test:js",
-    "verify": "tsc --noEmit && eslint ui && c8 npm run test:js"
+    "verify": "tsc --noEmit && eslint ui && c8 npm run test:js",
+    "release:gate": "npm run verify && npm run coverage"
   },
   "devDependencies": {
     "c8": "^11.0.0",

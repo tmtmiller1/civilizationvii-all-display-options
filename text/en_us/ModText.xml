@@ -50,7 +50,7 @@
             <Text>Global UI scale</Text>
         </Row>
         <Row Tag="LOC_ALL_DISPLAY_OPTIONS_UI_SCALE_INFO">
-            <Text>Size of the whole interface from 50% to 200% (the engine's full range; the built-in slider only reaches 50-125%). Lower = smaller HUD and more visible map. Setting this turns auto-scale off so the value is honoured. Takes effect on Confirm.</Text>
+            <Text>Size of the whole interface from 50% to 200% (the engine's full range; the built-in slider only reaches 50-125%). Lower = smaller HUD and more visible map. Setting this turns auto-scale off so the value is honored. Takes effect on Confirm.</Text>
         </Row>
 
         <!-- Auto-scale toggle -->
@@ -58,7 +58,7 @@
             <Text>UI auto-scale</Text>
         </Row>
         <Row Tag="LOC_ALL_DISPLAY_OPTIONS_AUTO_SCALE_INFO">
-            <Text>When on, the game auto-sizes the UI for your display (the post-patch behaviour that can look "zoomed in"). Turn it off to control size yourself with Global UI scale above.</Text>
+            <Text>When on, the game auto-sizes the UI for your display (the post-patch behavior that can look "zoomed in"). Turn it off to control size yourself with Global UI scale above.</Text>
         </Row>
     </EnglishText>
 </Database>

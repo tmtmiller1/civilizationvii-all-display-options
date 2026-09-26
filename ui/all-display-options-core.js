@@ -123,7 +123,7 @@ export function applyResolution(res) {
 }
 
 /**
- * Set the engine's UIGlobalScale (clamped) and disable auto-scale so it's honoured.
+ * Set the engine's UIGlobalScale (clamped) and disable auto-scale so it's honored.
  * @param {number|string} value The desired UI-scale percentage.
  * @returns {number} The clamped percentage actually applied.
  */
@@ -134,7 +134,7 @@ export function setGlobalScale(value) {
   // scale), so the game insisted on a UI reload though nothing net-changed.
   const prev = readGlobalScale();
   const wasAuto = !!safe(() => Configuration.getUser().uiAutoScale, false);
-  // UIGlobalScale is only honoured while auto-scale is OFF, so disable it here.
+  // UIGlobalScale is only honored while auto-scale is OFF, so disable it here.
   safe(() => UI.setOption("user", "Interface", "UIGlobalScale", v));
   safe(() => Configuration.getUser().setUiAutoScale(false));
   if (v !== prev || wasAuto) Options.needReloadRefCount += 1;
