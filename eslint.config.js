@@ -1,6 +1,6 @@
-// Dev-only ESLint flat config. Enforces the modularization gate (function length +
-// cyclomatic complexity) and catches real bugs. Mirrors the demographics mod's gate.
-// Dev tooling only — the shipped mod is just the modinfo + ui/ + text/.
+// Dev-only ESLint flat config: the modularization gate (function length and
+// cyclomatic complexity) plus correctness checks. Mirrors the demographics mod's
+// gate. The shipped mod is just the modinfo + ui/ + text/.
 
 const ENGINE_GLOBALS = {
   // Civ7 true globals used without importing (see civ7-modding-docs/06).

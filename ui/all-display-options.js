@@ -1,22 +1,12 @@
 // all-display-options.js
 //
-// Adds a "Display Tweaks" block to the global Options screen (under the shared
-// "Mods" category) that restores display choices the base game's dropdowns hide
-// or clamp:
+// Registers the mod's options (preset, resolution, UI scale, auto-scale) under
+// the shared "Mods" category of the Options screen.
 //
-//   * Resolution (all modes)  - every standard mode up to your panel's native
-//                               resolution, not just the short list the patch left.
-//   * Global UI scale         - the engine's real UIGlobalScale lever (50-200%),
-//                               instead of the in-game slider's 50-125% clamp.
-//   * UI auto-scale           - toggle the post-patch auto-scaling that made
-//                               everything look "zoomed in".
-//   * Display preset          - one-click, device-aware presets (reads your panel
-//                               and recommends a zoom-out setting).
-//
-// Why this works: on Confirm the options screen calls Options.commitOptions()
-// with no category, whose default branch applies graphics options AND fires
-// UIGlobalScaleChanged - so both the resolution and the scale changes below take
-// effect through the normal Confirm button. See core/ui/options/screen-options.js.
+// On Confirm the options screen calls Options.commitOptions() with no category.
+// Its default branch applies graphics options and fires UIGlobalScaleChanged,
+// so both the resolution and the scale changes below take effect through the
+// normal Confirm button. See core/ui/options/screen-options.js.
 
 import { CategoryType, OptionType, Options } from "/core/ui/options/model-options.js";
 import "/all-display-options/ui/all-display-options-mod-options.js";
@@ -37,11 +27,8 @@ import {
 // it a single hyphen-free token (-> LOC_OPTIONS_GROUP_ALLDISPLAYOPTIONS).
 const GROUP = "alldisplayoptions";
 
-// --- Option registrations -------------------------------------------------
-
 /**
- * Register the device-aware "Display preset" dropdown (Current / Recommended /
- * Maximum zoom-out / Game default) under the Mods category.
+ * "Display preset" dropdown: Current / Recommended / Maximum zoom-out / Game default.
  * @returns {void}
  */
 function registerPreset() {
@@ -56,9 +43,8 @@ function registerPreset() {
     id: "all-display-options-preset",
     initListener: (/** @type {*} */ info) => {
       info.selectedItemIndex = 0;
-      // Surface the detected panel + recommendation in the tooltip. Localized via
-      // a parameterized LOC tag ({1_Display}, {2_Scale}); falls back to the static
-      // LOC_ALL_DISPLAY_OPTIONS_PRESET_INFO if compose is unavailable.
+      // tooltip names the detected panel and the recommendation ({1_Display},
+      // {2_Scale}); falls back to the static PRESET_INFO text if compose fails
       info.description = safe(
         () => Locale.compose("LOC_ALL_DISPLAY_OPTIONS_PRESET_DETECTED", nativeLabel, rec),
         safe(() => Locale.compose("LOC_ALL_DISPLAY_OPTIONS_PRESET_INFO"), "LOC_ALL_DISPLAY_OPTIONS_PRESET_INFO")
@@ -76,8 +62,7 @@ function registerPreset() {
 }
 
 /**
- * Register the "Resolution (all modes)" dropdown: every standard mode up to the
- * panel's native size, including modes the base game's dropdown omits.
+ * "Resolution (all modes)" dropdown.
  * @returns {void}
  */
 function registerResolution() {
@@ -108,8 +93,8 @@ function registerResolution() {
 }
 
 /**
- * Register the "Global UI scale" slider spanning the engine's full 50–200% range
- * (the built-in slider only reaches 50–125%).
+ * "Global UI scale" slider over the engine's full 50-200% range (the built-in
+ * slider stops at 125%).
  * @returns {void}
  */
 function registerGlobalScale() {
@@ -137,8 +122,7 @@ function registerGlobalScale() {
 }
 
 /**
- * Register the "UI auto-scale" checkbox toggling the engine's post-patch
- * auto-sizing (the behavior that can look "zoomed in").
+ * "UI auto-scale" checkbox.
  * @returns {void}
  */
 function registerAutoScale() {
@@ -151,8 +135,8 @@ function registerAutoScale() {
       info.currentValue = !!safe(() => Configuration.getUser().uiAutoScale, true);
     },
     updateListener: (/** @type {*} */ info, /** @type {*} */ value) => {
-      // Only flag a required reload when the toggle actually changes, so re-affirming the
-      // current value (or toggling on then off) doesn't leave a spurious "reload required".
+      // bump the reload count only on a real change, or re-affirming the current
+      // value would leave a stale "reload required"
       const changed = !!value !== !!info.currentValue;
       safe(() => Configuration.getUser().setUiAutoScale(!!value));
       info.currentValue = !!value;
@@ -164,7 +148,7 @@ function registerAutoScale() {
 }
 
 Options.addInitCallback(() => {
-  // Order top-to-bottom in the Mods category.
+  // order is top-to-bottom in the Mods category
   registerPreset();
   registerResolution();
   registerGlobalScale();

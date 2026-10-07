@@ -1,26 +1,25 @@
 [h1]All Display and Resolution Options[/h1]
 
-Restores the display choices Civilization VII hides or clamps, as plain options under the [b]Mods[/b] category. No HUD takeover, no new windows, just the controls the game should have shipped, applied through the normal [b]Confirm[/b] button.
+This mod brings back the display settings that Civilization VII hides or limits. They appear as ordinary options under the [b]Mods[/b] category and apply with the normal [b]Confirm[/b] button.
 
-[b]Why this exists (especially on Mac):[/b] The [b]1.4.1[/b] update changed how the game handles display scaling, and Mac players in particular got a small slate of resolution options. The interface now defaults to an auto-scale that looks [i]zoomed in[/i] on Retina/high-DPI panels, the resolution dropdown lost most of its useful modes, and the in-game UI-scale slider was clamped to a narrow 50–125%. There was to my knowledge no clean way to just set your native resolution and shrink the HUD. This mod gives those controls back.
+[h2]Why I made it[/h2]
+The 1.4.1 update changed how the game scales its display, and Mac players came off worst. The interface now auto-scales in a way that looks zoomed in on Retina and other high-DPI screens. The resolution dropdown lost most of its useful modes, and the UI-scale slider stops at 125%. As far as I know there was no clean way to set your native resolution and shrink the HUD, so I wrote one.
 
-[b]What it adds:[/b]
+[h2]What it adds[/h2]
 [list]
-[*][b]Resolution (all modes)[/b]: every standard 16:9 and 16:10 resolution up to your display's native size, including the modes the base game's dropdown leaves out. Higher resolution = more of the map on screen ("more zoomed out").
-[*][b]Global UI scale (50–200%)[/b]: the engine's full interface-scale range, instead of the built-in slider's 50–125% clamp. Lower = smaller HUD and more visible map.
-[*][b]UI auto-scale toggle[/b]: turn off the post-patch auto-sizing that can make everything look "zoomed in", and control the size yourself.
-[*][b]One-click, device-aware presets[/b]: the mod reads your panel and offers Current, Recommended, Maximum zoom-out, and Game default. Pick one, press Confirm.
+[*][b]Resolution (all modes)[/b] lists every standard 16:9 and 16:10 resolution up to your display's native size, including the ones the game's dropdown leaves out. A higher resolution shows more of the map.
+[*][b]Global UI scale[/b] runs from 50% to 200%, the engine's full range. The built-in slider stops at 125%. Lower values give a smaller HUD and more map.
+[*][b]UI auto-scale[/b] can be switched off, so the interface stops resizing itself and you choose the size.
+[*][b]Display preset[/b] reads your screen and offers Current, Recommended, Maximum zoom-out and Game default. Pick one and press Confirm.
 [/list]
 
-[b]How to use:[/b] open [b]Options[/b] (main menu or in-game), find [b]All Display and Resolution Options[/b] under the Mods category, choose your settings, and press Confirm. The resolution and UI-scale changes take effect immediately through the game's own apply path.
+[h2]How to use it[/h2]
+Open Options from the main menu or in a game, go to the Mods category and find [b]All Display and Resolution Options[/b]. Change what you want and press Confirm. Resolution and UI scale change right away.
 
-[b]Built to play nice with your other mods:[/b]
-[list]
-[*]It never writes to the shared mod-settings store, so it can't wipe another mod's saved options.
-[*]Every script it ships is uniquely named, so it can never break another mod's options menu.
-[/list]
+[h2]Other mods[/h2]
+The mod does not write to the shared mod-settings store, so other mods' saved options are left alone. Its scripts have their own names and cannot replace another mod's options scripts.
 
-English only for now. MIT licensed. Source is shipped readable and inspectable. Feedback and bug reports welcome.
+English only for now. The source is readable and MIT licensed. Bug reports are welcome.
 
 [h2]Source and documentation[/h2]
 [list]

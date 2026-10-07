@@ -3,27 +3,27 @@ Generated from CHANGELOG.md by scripts/steam-changelog.mjs; release.sh uploads t
 To fix an old Workshop entry, paste the text under its ==== line into that entry's Edit box on the change-notes page.
 A block edited by hand is kept as-is. Delete a block to regenerate it from CHANGELOG.md.
 
-==== 1.0.1 | 2026-07-06 | src 6caff994d067 | gen a116c51f8a81 ====
+==== 1.0.1 | 2026-07-06 | src a9bc1d1c73e2 | gen 7f1b9ace12c4 ====
 [b]Version 1.0.1 · 6 July 2026[/b]
-Maintenance release. No gameplay or options behavior changes — this is an internal code-quality pass following a full quality review of the mod.
+Maintenance release. No gameplay or options behavior changes; this is an internal code-quality pass after a review of the mod.
 
 [b]Changed[/b]
-• Split the monolithic options module: extracted the pure resolution/scale helpers and engine-adapter layer into a new all-display-options-core.js, dropping the UI-wiring file from 336 to 169 lines with no runtime behavior change.
-• Registered all-display-options-core.js in both the shell- and game-scope import lists so the extracted module loads in every scope.
+• Split the options module: the pure resolution/scale helpers and the engine-adapter layer moved into a new all-display-options-core.js, taking the UI-wiring file from 336 to 169 lines with no runtime behavior change.
+• Registered all-display-options-core.js in both the shell- and game-scope import lists so the new module loads in every scope.
 
 [b]Quality[/b]
-• Test coverage held at 100% statements, branches, functions, and lines across all three shipped modules after the split.
-• npm run verify (tsc type-check + eslint + 100% coverage gate) passes clean on the refactored code.
-• Documented the Steam publishedfileid persistence flow in the README so repeat uploads stay in update mode.
+• Test coverage stays at 100% statements, branches, functions and lines across all three shipped modules.
+• npm run verify (tsc type-check + eslint + 100% coverage gate) passes on the refactored code.
+• The README now documents how the Steam publishedfileid is persisted so repeat uploads stay in update mode.
 
-==== 1.0.0 | 2026-06-25 | src 9e46166c47dc | gen 520a2686b6a2 ====
+==== 1.0.0 | 2026-06-25 | src 57ff4ecb87e9 | gen dcf035465e5e ====
 [b]Version 1.0.0 · 25 June 2026[/b]
 
 [b]Added[/b]
-• [b]Resolution (all modes).[/b] Every standard 16:9 and 16:10 resolution up to your display's native size, including modes the base game's dropdown leaves out.
-• [b]Global UI scale slider (50–200%).[/b] The engine's full UIGlobalScale range, versus the built-in slider's 50–125% clamp. Lower = smaller HUD, more visible map.
-• [b]UI auto-scale toggle.[/b] Turn off the post-patch auto-sizing that can look “zoomed in” and control the size yourself.
-• [b]One-click, device-aware presets.[/b] Detects your panel and offers Current / Recommended / Maximum zoom-out / Game default.
+• Resolution (all modes): every standard 16:9 and 16:10 resolution up to your display's native size, including modes the base game's dropdown leaves out.
+• Global UI scale slider (50–200%): the engine's full UIGlobalScale range instead of the built-in slider's 50–125% clamp. Lower = smaller HUD, more visible map.
+• UI auto-scale toggle: turn off the post-patch auto-sizing that can look “zoomed in” and control the size yourself.
+• One-click, device-aware presets: detects your panel and offers Current / Recommended / Maximum zoom-out / Game default.
 
 [b]Notes[/b]
-• Options live under the native Options screen's “Mods” category (and render in Mod Settings Manager when present). Good-citizen by construction: no shared localStorage writes, and all UIScripts are uniquely named so they can never shadow another mod's option modules.
+• Options live under the native Options screen's “Mods” category (and render in Mod Settings Manager when present). The mod makes no shared localStorage writes, and all its UIScripts are uniquely named so they cannot shadow another mod's option modules.

@@ -1,6 +1,6 @@
-// Node ESM loader for the test harness. Maps the two kinds of absolute specifiers the mod uses —
-// `/all-display-options/*` (the mod's own files) and the engine `/core/ui/options/*` modules — onto
-// real files so the mod can be imported and exercised without a live Civ runtime.
+// Node ESM loader for the test harness. Maps the two kinds of absolute specifiers the mod uses,
+// `/all-display-options/*` (the mod's own files) and the engine `/core/ui/options/*` modules, onto
+// real files so the mod can be imported without a live Civ runtime.
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 

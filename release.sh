@@ -1,17 +1,15 @@
 #!/usr/bin/env bash
-# release.sh: produce a clean zip + Steam Workshop manifest for the
+# release.sh: build a clean zip + Steam Workshop manifest for the
 # "All Display and Resolution Options" mod.
 #
 # Usage:  ./release.sh
 # Output: dist/all-display-options-vX.Y.Z.zip  (X.Y.Z read from the modinfo <Version>)
 #
-# What this does:
-#   1. Runs the quality gate (tsc + eslint + 100% coverage), unless deps aren't
-#      installed (run `npm install` once) or SKIP_VERIFY=1 is set.
-#   2. Mirrors the mod source into dist/all-display-options/ (excluding dev cruft).
-#   3. Ships readable JS (no minification, transparent source is intentional).
-#   4. Syntax-checks the shipped JS and audits the zip against an allow-list.
-#   5. Renders a 1024x1024 preview.png and writes a steamcmd workshop_item.vdf.
+# Runs the quality gate (tsc + eslint + 100% coverage) unless node_modules is
+# missing or SKIP_VERIFY=1, mirrors the source into dist/all-display-options/
+# without the dev files, syntax-checks the shipped JS (unminified on purpose),
+# audits the zip against an allow-list, renders a 1024x1024 preview.png and
+# writes a steamcmd workshop_item.vdf.
 #
 # Run from the mod source directory.
 
@@ -22,7 +20,7 @@ MOD_ID="all-display-options"
 APPID="1295660"        # Sid Meier's Civilization VII
 TITLE="All Display and Resolution Options"
 
-# ── Quality gate ──────────────────────────────────────────────────────────
+# quality gate
 if [ "${SKIP_VERIFY:-0}" = "1" ]; then
     echo "release: SKIP_VERIFY=1, skipping the quality gate."
 elif [ ! -d node_modules ]; then
@@ -42,7 +40,7 @@ AUTHORS="$(grep -oE '<Authors>[^<]+</Authors>' "$MOD_ID.modinfo" | head -1 | sed
 case "$AUTHORS" in ""|"Your Name"|"TODO") echo "error: set a real <Authors> before packaging."; exit 1;; esac
 case "$VERSION" in *-smoke|*-dev|0.0.*) echo "error: <Version> '$VERSION' looks like a dev tag; bump first."; exit 1;; esac
 
-# ── Steam Workshop published file id (persisted outside dist/) ─────────────
+# Steam Workshop published file id, persisted outside dist/
 WORKSHOP_ID_FILE="steam_workshop_id.txt"
 PUBLISHED_FILE_ID="${WORKSHOP_PUBLISHED_FILE_ID:-}"
 SAVED_ID=""
@@ -91,7 +89,7 @@ echo "    OK: every shipped entry matches the allow-list."
 unzip -l "$ZIP_PATH" | head -20 || true
 SIZE="$(du -h "$ZIP_PATH" | cut -f1)"
 
-# ── Workshop assets ───────────────────────────────────────────────────────
+# workshop assets
 PREVIEW_SRC="docs/workshop-preview.svg"
 PREVIEW_OUT="$DIST_DIR/preview.png"
 if [ -f "$PREVIEW_SRC" ] && command -v rsvg-convert >/dev/null 2>&1; then

@@ -1,5 +1,5 @@
-// Full-coverage test for ui/all-display-options-mod-options.js — the shared "Mods" category bootstrap. Re-imports the
-// module (cache-busted) against the shared options stub in three states to exercise every branch:
+// Full-coverage test for ui/all-display-options-mod-options.js, the shared "Mods" category bootstrap. Re-imports the
+// module (cache-busted) against the shared options stub in several states so every branch runs:
 //   1. category already present  → both guards skip
 //   2. category absent           → both guards assign
 //   3. category frozen           → the assignment throws and is swallowed by the try/catch
@@ -8,20 +8,20 @@ import assert from "node:assert/strict";
 const stub = await import("./stubs/engine-options-stub.mjs");
 const { CategoryType, CategoryData } = stub;
 
-// ── 1. Already present: nothing is overwritten. ──────────────────────────────
+// 1. Already present: nothing is overwritten.
 CategoryType.Mods = "mods";
 CategoryData.mods = { title: "EXISTING", description: "EXISTING" };
 await import("/all-display-options/ui/all-display-options-mod-options.js?case=1");
 assert.equal(CategoryData.mods.title, "EXISTING", "must not clobber an existing category");
 
-// ── 2. Absent: both the category id and its data are established. ─────────────
+// 2. Absent: both the category id and its data are established.
 delete CategoryType.Mods;
 delete CategoryData.mods;
 await import("/all-display-options/ui/all-display-options-mod-options.js?case=2");
 assert.equal(CategoryType.Mods, "mods");
 assert.equal(CategoryData.mods.title, "LOC_UI_CONTENT_MGR_SUBTITLE");
 
-/** Capture console.warn for one import, returning the recorded warning arg lists. @param {() => Promise<any>} run */
+/** Capture console.warn around one import and return the recorded arg lists. @param {() => Promise<any>} run */
 async function withWarnCapture(run) {
   const captured = [];
   const realWarn = console.warn;
@@ -34,7 +34,7 @@ async function withWarnCapture(run) {
   return captured;
 }
 
-// ── 3. Frozen engine object: the write throws and is swallowed (no broken menu). ──
+// 3. Frozen engine object: the write throws and is swallowed (no broken menu).
 delete CategoryType.Mods;
 Object.freeze(CategoryType);
 let warnings = await withWarnCapture(() => import("/all-display-options/ui/all-display-options-mod-options.js?case=3"));
@@ -45,7 +45,7 @@ assert.ok(
   "the warning should name the skipped bootstrap"
 );
 
-// ── 4. Options model absent (null binding): the explicit else-branch reports + registers nothing. ──
+// 4. Options model absent (null binding): the else branch reports and registers nothing.
 stub.__setCategoryModel(null, {});
 warnings = await withWarnCapture(() => import("/all-display-options/ui/all-display-options-mod-options.js?case=4"));
 assert.equal(warnings.length, 1, "an unavailable model should be reported once");

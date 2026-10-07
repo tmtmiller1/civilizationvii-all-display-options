@@ -1,11 +1,10 @@
-// Behavioral + full-coverage test for ui/all-display-options.js. The engine option API is the
-// recording stub (loader.mjs → stubs/engine-options-stub.mjs); the global engine singletons UI,
-// Configuration and Locale are installed on globalThis here. We drain the registration callback
-// under several display configurations and invoke every option's listeners (and every preset
-// thunk) so all branches of the resolution / scale / preset logic execute.
+// Full-coverage test for ui/all-display-options.js. The engine option API is the recording stub
+// (loader.mjs → stubs/engine-options-stub.mjs); the engine globals UI, Configuration and Locale
+// are installed on globalThis here. The registration callback is drained under several display
+// configurations and every listener and preset thunk is invoked so each branch runs.
 import assert from "node:assert/strict";
 
-// ── Controllable global engine singletons ────────────────────────────────────
+// controllable engine globals
 const uiStore = { UIGlobalScale: 100 };
 let uiThrows = false;
 let configThrows = false;
@@ -66,11 +65,11 @@ function registerWith(supported, graphicsResolution) {
   return new Map(opts.map((o) => [o.id, o]));
 }
 
-// ── 1. Rich display: multi-mode supported list (covers getNativeResolution best/>/!> branches,
-//      the filter dropping an invalid entry, native-tagging, the 1440p recommendation). ──────────
+// 1. Rich display: multi-mode supported list (getNativeResolution best/>/!> branches, the
+//    filter dropping an invalid entry, native tagging, the 1440p recommendation).
 let byId = registerWith(
-  // 1920x1600 is within native's AREA but exceeds its HEIGHT (1440): it must be dropped by
-  // the per-dimension cap (an ultrawide/atypical-panel guard), not just the area cap.
+  // 1920x1600 is within native's area but exceeds its height (1440), so the per-dimension
+  // cap must drop it; the area cap alone would let it through
   { resolutions: [{ i: 1280, j: 720 }, { i: 2560, j: 1440 }, { i: 1920, j: 1080 }, { i: 1920, j: 1600 }, { i: 0, j: 0 }] },
   { i: 2560, j: 1440 }
 );
@@ -103,7 +102,7 @@ assert.ok(
   "a mode within native's area but exceeding its height (1600 > 1440) must be dropped (per-dimension cap)"
 );
 
-// Resolution init: stored resolution that IS in the list selects its index.
+// Resolution init: a stored resolution that is in the list selects its index.
 let info = {};
 resOpt.initListener(info);
 assert.ok(info.selectedItemIndex > 0, "stored native resolution should select a non-Auto index");
@@ -113,8 +112,8 @@ resOpt.updateListener({}, 1);
 resOpt.updateListener({}, 999);
 assert.ok(Options.needReloadRefCount >= before);
 
-// Preset (native present): exercise every thunk — Current (no-op), Recommended, Max-zoom, Default,
-// and an out-of-range index.
+// Preset (native present): every thunk, Current (no-op), Recommended, Max-zoom, Default, plus an
+// out-of-range index.
 const presetA = byId.get("all-display-options-preset");
 info = {};
 presetA.initListener(info); // Locale.compose succeeds → composed description
@@ -162,9 +161,9 @@ assert.equal(userConfig.uiAutoScale, false);
 autoOpt.updateListener({}, true);
 assert.equal(userConfig.uiAutoScale, true);
 
-// ── 2. No display info: supportedOptions undefined, no graphics options (covers native === null,
-//      the empty-list recommendation, getSupportedResolutions' non-array path, resolution init's
-//      "no current resolution" path). ──────────────────────────────────────────────────────────
+// 2. No display info: supportedOptions undefined, no graphics options (native === null, the
+//    empty-list recommendation, getSupportedResolutions' non-array path, resolution init's
+//    "no current resolution" path).
 byId = registerWith(undefined, undefined);
 const resOptB = byId.get("all-display-options-resolution");
 info = {};
@@ -183,17 +182,17 @@ assert.ok(
   "no native tag when the panel size is unknown"
 );
 
-// ── 3. Recommendation tiers: high-DPI (>=1900 → 75%) and 1080p (<1400 → 100%). ─────────────────
+// 3. Recommendation tiers: high-DPI (>=1900 → 75%) and 1080p (<1400 → 100%).
 registerWith({ resolutions: [{ i: 3840, j: 2160 }] }, { i: 0, j: 0 }); // native height 2160 → 75
 registerWith({ resolutions: [{ i: 1920, j: 1080 }] }, { i: 0, j: 0 }); // native height 1080 → 100
 
-// ── 4. Resolution init when the stored mode is valid but NOT in the list (idx === -1 branch). ───
+// 4. Resolution init when the stored mode is valid but not in the list (idx === -1 branch).
 byId = registerWith({ resolutions: [{ i: 2560, j: 1440 }] }, { i: 4321, j: 1234 });
 info = {};
 byId.get("all-display-options-resolution").initListener(info);
 assert.equal(info.selectedItemIndex, 0, "an unlisted stored resolution falls back to Auto");
 
-// ── 5. Defensive paths: engine singletons throwing are swallowed by safe(). ─────────────────────
+// 5. Defensive paths: engine globals that throw are swallowed by safe().
 byId = registerWith({ resolutions: [{ i: 1920, j: 1080 }] }, { i: 0, j: 0 });
 uiThrows = true;
 info = {};
@@ -213,7 +212,7 @@ byId.get("all-display-options-preset").initListener(info); // both compose calls
 assert.equal(info.description, "LOC_ALL_DISPLAY_OPTIONS_PRESET_INFO");
 localeThrows = false;
 
-// ── 6. applyResolution with no pending graphics target (covers the `!target` early return). ─────
+// 6. applyResolution with no pending graphics target (the `!target` early return).
 Options.graphicsOptions = undefined;
 byId.get("all-display-options-resolution").updateListener({}, 1); // applyResolution → no target → returns
 

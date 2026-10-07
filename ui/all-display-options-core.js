@@ -1,9 +1,8 @@
 import { Options } from "/core/ui/options/model-options.js";
 
-// Standard 16:9 and 16:10 modes we want available regardless of what the engine
-// currently advertises. Merged with the engine's own supported list, deduped,
-// and capped at the native panel resolution so we never offer a mode larger than
-// the display (which the engine would refuse without arbitrary window sizing).
+// Standard 16:9 and 16:10 modes offered regardless of what the engine currently
+// advertises. Merged with the engine's own list, deduped, and capped at the native
+// panel size, since the engine refuses a mode larger than the display.
 const CURATED_RESOLUTIONS = [
   // 16:9
   { i: 1280, j: 720 }, { i: 1366, j: 768 }, { i: 1600, j: 900 },
@@ -18,12 +17,12 @@ export const SCALE_MIN = 50;
 export const SCALE_MAX = 200;
 
 /**
- * Run `fn`, returning its result, or `fallback` if it throws. Swallows engine-API
- * differences so one bad call can't break the Options screen.
+ * Run `fn` and return its result, or `fallback` if it throws. Engine-API
+ * differences then can't take the Options screen down.
  * @template T
- * @param {() => T} fn Thunk to invoke.
- * @param {T} [fallback] Value returned if `fn` throws.
- * @returns {T | undefined} The result of `fn`, or `fallback` on error.
+ * @param {() => T} fn
+ * @param {T} [fallback]
+ * @returns {T | undefined}
  */
 export function safe(fn, fallback) {
   try {
@@ -34,9 +33,9 @@ export function safe(fn, fallback) {
 }
 
 /**
- * Coerce a value to an integer UI-scale percentage clamped to [SCALE_MIN, SCALE_MAX].
- * @param {number|string} v The raw scale value.
- * @returns {number} The clamped integer percentage (100 when not finite).
+ * Integer UI-scale percentage clamped to [SCALE_MIN, SCALE_MAX]; 100 when not finite.
+ * @param {number|string} v
+ * @returns {number}
  */
 function clampScale(v) {
   const n = Math.floor(Number(v));
@@ -45,8 +44,8 @@ function clampScale(v) {
 }
 
 /**
- * The engine's supported resolution modes, filtered to valid positive sizes.
- * @returns {{i: number, j: number}[]} The supported modes (empty when unavailable).
+ * The engine's supported modes, filtered to positive sizes. Empty when unavailable.
+ * @returns {{i: number, j: number}[]}
  */
 function getSupportedResolutions() {
   const list = safe(() => Options.supportedOptions?.resolutions, null);
@@ -54,8 +53,8 @@ function getSupportedResolutions() {
 }
 
 /**
- * The display's native resolution = the largest-area supported mode (or null).
- * @returns {{i: number, j: number}|null} The native mode, or null when unknown.
+ * Native resolution, taken as the largest-area supported mode. Null when unknown.
+ * @returns {{i: number, j: number}|null}
  */
 export function getNativeResolution() {
   const supported = getSupportedResolutions();
@@ -67,9 +66,9 @@ export function getNativeResolution() {
 }
 
 /**
- * Recommended UI scale for "more zoomed out", derived from native panel height.
- * @param {{i: number, j: number}|null} native The native resolution, or null.
- * @returns {number} The recommended UI-scale percentage.
+ * Recommended UI scale for "more zoomed out", from the native panel height.
+ * @param {{i: number, j: number}|null} native
+ * @returns {number}
  */
 export function recommendedScaleFor(native) {
   const h = native ? native.j : 0;
@@ -79,19 +78,17 @@ export function recommendedScaleFor(native) {
 }
 
 /**
- * Build the resolution dropdown items: Auto, then standard modes up to native.
- * @returns {{label: string, resolution: {i: number, j: number}}[]} Dropdown items.
+ * Resolution dropdown items: Auto, then standard modes up to native, largest first.
+ * @returns {{label: string, resolution: {i: number, j: number}}[]}
  */
 export function buildResolutionItems() {
   const native = getNativeResolution();
   const nativeArea = native ? native.i * native.j : Infinity;
   const byKey = new Map();
-  // Inputs are pre-validated: the supported list is filtered, CURATED entries are
-  // literals, and `native` is null-guarded below, so we only need the area cap.
   const add = (/** @type {{i: number, j: number}} */ r) => {
-    if (r.i * r.j > nativeArea) return; // never exceed the panel (area)
-    // ...or in either dimension: an ultrawide panel (e.g. 2560x1080) passes the area cap
-    // for a taller mode (1920x1200) that the engine would then refuse/letterbox on Confirm.
+    if (r.i * r.j > nativeArea) return; // never exceed the panel by area
+    // nor in either dimension: an ultrawide (2560x1080) passes the area cap for a
+    // taller mode (1920x1200) that the engine would refuse or letterbox on Confirm
     if (native && (r.i > native.i || r.j > native.j)) return;
     byKey.set(`${r.i}x${r.j}`, { i: r.i, j: r.j });
   };
@@ -109,9 +106,9 @@ export function buildResolutionItems() {
 }
 
 /**
- * Apply a resolution to the engine's pending graphics options (committed on Confirm).
- * Bumps the reload ref-count when the mode actually changes.
- * @param {{i: number, j: number}} res The target resolution ({i:0,j:0} = Auto).
+ * Write a resolution into the engine's pending graphics options (committed on
+ * Confirm). Bumps the reload ref-count only when the mode changes.
+ * @param {{i: number, j: number}} res Auto is i:0, j:0.
  * @returns {void}
  */
 export function applyResolution(res) {
@@ -123,18 +120,17 @@ export function applyResolution(res) {
 }
 
 /**
- * Set the engine's UIGlobalScale (clamped) and disable auto-scale so it's honored.
- * @param {number|string} value The desired UI-scale percentage.
- * @returns {number} The clamped percentage actually applied.
+ * Set the engine's UIGlobalScale (clamped) and turn auto-scale off, since the
+ * engine only honors UIGlobalScale while auto-scale is off.
+ * @param {number|string} value
+ * @returns {number} the clamped percentage applied
  */
 export function setGlobalScale(value) {
   const v = clampScale(value);
-  // Only flag a required reload when something actually changes (mirrors applyResolution).
-  // An unconditional bump left the counter >0 after a no-op set (e.g. re-selecting the same
-  // scale), so the game insisted on a UI reload though nothing net-changed.
+  // bump the reload count only on a real change (as applyResolution does); an
+  // unconditional bump made the game demand a reload after re-selecting the same scale
   const prev = readGlobalScale();
   const wasAuto = !!safe(() => Configuration.getUser().uiAutoScale, false);
-  // UIGlobalScale is only honored while auto-scale is OFF, so disable it here.
   safe(() => UI.setOption("user", "Interface", "UIGlobalScale", v));
   safe(() => Configuration.getUser().setUiAutoScale(false));
   if (v !== prev || wasAuto) Options.needReloadRefCount += 1;
@@ -142,8 +138,8 @@ export function setGlobalScale(value) {
 }
 
 /**
- * Read the engine's current UIGlobalScale, clamped, defaulting to 100.
- * @returns {number} The current UI-scale percentage.
+ * Current UIGlobalScale, clamped; 100 when unset or not positive.
+ * @returns {number}
  */
 export function readGlobalScale() {
   const raw = safe(() => UI.getOption("user", "Interface", "UIGlobalScale"), 100);
@@ -152,11 +148,10 @@ export function readGlobalScale() {
 }
 
 /**
- * Build the preset dropdown items (Current / Recommended / Maximum zoom-out /
- * Game default), each carrying an `apply` thunk (null = no-op for "Current").
- * @param {{i: number, j: number}|null} native The detected native resolution.
- * @param {number} rec The recommended UI-scale percentage for this display.
- * @returns {{label: string, apply: (() => void)|null}[]} The preset items.
+ * Preset dropdown items, each carrying an `apply` thunk (null for "Current").
+ * @param {{i: number, j: number}|null} native
+ * @param {number} rec recommended UI-scale percentage for this display
+ * @returns {{label: string, apply: (() => void)|null}[]}
  */
 export function buildPresetItems(native, rec) {
   return [
