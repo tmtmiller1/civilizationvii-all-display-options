@@ -32,21 +32,13 @@ export function safe(fn, fallback) {
   }
 }
 
-/**
- * Integer UI-scale percentage clamped to [SCALE_MIN, SCALE_MAX]; 100 when not finite.
- * @param {number|string} v
- * @returns {number}
- */
+/** @param {number|string} v */
 function clampScale(v) {
   const n = Math.floor(Number(v));
   if (!Number.isFinite(n)) return 100;
   return Math.min(SCALE_MAX, Math.max(SCALE_MIN, n));
 }
 
-/**
- * The engine's supported modes, filtered to positive sizes. Empty when unavailable.
- * @returns {{i: number, j: number}[]}
- */
 function getSupportedResolutions() {
   const list = safe(() => Options.supportedOptions?.resolutions, null);
   return Array.isArray(list) ? list.filter((/** @type {*} */ r) => r && r.i > 0 && r.j > 0) : [];

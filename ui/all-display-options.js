@@ -61,10 +61,6 @@ function registerPreset() {
   });
 }
 
-/**
- * "Resolution (all modes)" dropdown.
- * @returns {void}
- */
 function registerResolution() {
   const items = buildResolutionItems();
   Options.addOption({
@@ -121,10 +117,6 @@ function registerGlobalScale() {
   });
 }
 
-/**
- * "UI auto-scale" checkbox.
- * @returns {void}
- */
 function registerAutoScale() {
   Options.addOption({
     category: CategoryType.Mods,
