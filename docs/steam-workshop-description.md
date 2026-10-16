@@ -17,9 +17,9 @@ The 1.4.1 update changed how the game scales its display, and Mac players came o
 Open Options from the main menu or in a game, go to the Mods category and find [b]All Display and Resolution Options[/b]. Change what you want and press Confirm. Resolution and UI scale change right away.
 
 [h2]Other mods[/h2]
-The mod does not write to the shared mod-settings store, so other mods' saved options are left alone. Its scripts have their own names and cannot replace another mod's options scripts.
+Your choices are saved by the game itself, outside the shared mod-settings store. The mod carries the Tower Settings Keeper, which keeps every mod's saved settings readable after a restart. Its own scripts have their own names and can't replace another mod's options scripts.
 
-English only for now. The source is readable and MIT licensed. Bug reports are welcome.
+In English, German, Spanish, French, Italian, Japanese, Korean, Polish, Brazilian Portuguese, Russian, and Simplified and Traditional Chinese, using the game's own words for its terms. Corrections to the translations are welcome. The source is readable and MIT licensed. Bug reports are welcome.
 
 [h2]Source and documentation[/h2]
 [list]
@@ -33,5 +33,5 @@ This mod is developed with [url=https://github.com/tmtmiller1/civilizationvii_to
 [/list]
 [h2]Special Thanks[/h2]
 [list]
-[*][b]Potato McWhisky[/b], for teaching me to love again, Civilization-wise (Civ VI), after growing up as a Civilization II, IV, and V player. Making this mod is an act of faith that the community will eventually help make Civilization VII as good as the previous entries.
+[*][b]Potato McWhisky[/b], for teaching me to love again, Civilization-wise (Civ VI), after growing up as a Civilization II, IV, and V player.
 [/list]

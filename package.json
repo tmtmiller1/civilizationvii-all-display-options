@@ -9,7 +9,9 @@
     "lint": "eslint ui",
     "test:options": "node --loader ./tests/loader.mjs tests/all-display-options.mjs",
     "test:mod-options": "node --loader ./tests/loader.mjs tests/mod-options.mjs",
-    "test:js": "npm run test:options && npm run test:mod-options",
+    "test:reload": "node --loader ./tests/loader.mjs tests/reload-count.mjs",
+    "test:i18n": "node tests/i18n.mjs",
+    "test:js": "npm run test:options && npm run test:mod-options && npm run test:reload && npm run test:i18n",
     "coverage": "c8 npm run test:js",
     "verify": "tsc --noEmit && eslint ui && c8 npm run test:js",
     "release:gate": "npm run verify && npm run coverage"

@@ -90,8 +90,10 @@ export function buildResolutionItems() {
 
   const modes = Array.from(byKey.values()).sort((a, b) => b.i * b.j - a.i * a.j);
   const items = [{ label: "LOC_OPTIONS_GFX_AUTO", resolution: { i: 0, j: 0 } }];
+  // only the word is translated; the numbers stay as the base game's own dropdown writes them
+  const nativeWord = safe(() => Locale.compose("LOC_ALL_DISPLAY_OPTIONS_RESOLUTION_NATIVE"), "(native)");
   for (const m of modes) {
-    const tag = native && m.i === native.i && m.j === native.j ? "  (native)" : "";
+    const tag = native && m.i === native.i && m.j === native.j ? `  ${nativeWord}` : "";
     items.push({ label: `${m.i} x ${m.j}${tag}`, resolution: m });
   }
   return items;
@@ -99,16 +101,16 @@ export function buildResolutionItems() {
 
 /**
  * Write a resolution into the engine's pending graphics options (committed on
- * Confirm). Bumps the reload ref-count only when the mode changes.
+ * Confirm).
  * @param {{i: number, j: number}} res Auto is i:0, j:0.
  * @returns {void}
  */
 export function applyResolution(res) {
   const target = safe(() => Options.graphicsOptions?.resolution, null);
   if (!target) return;
-  if (target.i !== res.i || target.j !== res.j) Options.needReloadRefCount += 1;
   target.i = res.i;
   target.j = res.j;
+  resolutionReload.sync();
 }
 
 /**
@@ -119,13 +121,10 @@ export function applyResolution(res) {
  */
 export function setGlobalScale(value) {
   const v = clampScale(value);
-  // bump the reload count only on a real change (as applyResolution does); an
-  // unconditional bump made the game demand a reload after re-selecting the same scale
-  const prev = readGlobalScale();
-  const wasAuto = !!safe(() => Configuration.getUser().uiAutoScale, false);
   safe(() => UI.setOption("user", "Interface", "UIGlobalScale", v));
   safe(() => Configuration.getUser().setUiAutoScale(false));
-  if (v !== prev || wasAuto) Options.needReloadRefCount += 1;
+  scaleReload.sync();
+  autoScaleReload.sync();
   return v;
 }
 
@@ -138,6 +137,50 @@ export function readGlobalScale() {
   const v = Number(raw);
   return clampScale(Number.isFinite(v) && v > 0 ? v : 100);
 }
+
+/** @returns {boolean} whether the engine's UI auto-scale is on (true when unreadable) */
+export function readAutoScale() {
+  return !!safe(() => Configuration.getUser().uiAutoScale, true);
+}
+
+function readResolutionKey() {
+  const r = safe(() => Options.graphicsOptions?.resolution, null);
+  return r ? `${r.i}x${r.j}` : null;
+}
+
+/**
+ * One setting's share of Options.needReloadRefCount. The mod holds one count
+ * while the setting differs from its value when the Options screen opened and
+ * gives it back once the setting returns there, so changing a value and
+ * changing it back doesn't leave the game asking for a reload. The game zeroes
+ * the count on Confirm and Cancel; Cancel and the next opening re-run every
+ * initListener, which calls start(). Counts the base game's own options raise
+ * are left alone.
+ * @param {() => unknown} read the setting's current value, comparable with ===
+ */
+function reloadTracker(read) {
+  /** @type {unknown} */
+  let startValue;
+  let held = false;
+  return {
+    /** Take the current value as the one to come back to. */
+    start() {
+      startValue = read();
+      held = false;
+    },
+    /** Raise or lower the count to match the setting's current value. */
+    sync() {
+      const differs = read() !== startValue;
+      if (differs && !held) Options.needReloadRefCount += 1;
+      if (!differs && held && Options.needReloadRefCount > 0) Options.needReloadRefCount -= 1;
+      held = differs;
+    }
+  };
+}
+
+export const resolutionReload = reloadTracker(readResolutionKey);
+export const scaleReload = reloadTracker(readGlobalScale);
+export const autoScaleReload = reloadTracker(readAutoScale);
 
 /**
  * Preset dropdown items, each carrying an `apply` thunk (null for "Current").
@@ -168,7 +211,8 @@ export function buildPresetItems(native, rec) {
         applyResolution({ i: 0, j: 0 });
         safe(() => UI.setOption("user", "Interface", "UIGlobalScale", 100));
         safe(() => Configuration.getUser().setUiAutoScale(true));
-        Options.needReloadRefCount += 1;
+        scaleReload.sync();
+        autoScaleReload.sync();
       }
     }
   ];

@@ -7,6 +7,16 @@ generated from the matching section below by `release.sh`.
 
 ## [Unreleased]
 
+### Added
+- The options are in German, Spanish, French, Italian, Japanese, Korean, Polish, Brazilian Portuguese, Russian, and
+  Simplified and Traditional Chinese, using the game's own words for its terms. The "(native)" tag in the resolution
+  list is translated too.
+
+### Fixed
+- If you change the UI scale, auto-scale or resolution and then put it back before pressing Confirm, the game no longer
+  reloads the interface for it (in a game, it used to ask first). Each setting asks for a reload only while it differs
+  from where it was when you opened Options.
+
 ## [1.0.3] - 2026-10-14
 
 License notice only. The mod itself plays exactly as in 1.0.2.
@@ -31,6 +41,10 @@ Settings that survive a restart: the mod now carries the Tower Settings Keeper.
   standalone Tower Settings Keeper is installed too, one copy runs and the newest build wins. Nothing to set up:
   existing settings carry over. Tower Settings Keeper:
   [GitHub](https://github.com/tmtmiller1/civilizationvii_tower-settings-keeper), [Steam](https://steamcommunity.com/sharedfiles/filedetails/?id=3815023570).
+- Two fixes from July ship in this release too. Picking the UI scale or auto-scale value you already had used to
+  leave the game asking for an interface reload; now only a real change does. And on an ultrawide or other unusual
+  screen the resolution list could offer a mode taller or wider than the screen; every mode it offers now fits both
+  ways.
 
 ## [1.0.1] - 2026-07-06
 

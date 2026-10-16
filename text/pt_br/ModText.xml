@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Database>
+    <LocalizedText>
+        <Replace Tag="LOC_MOD_ALL_DISPLAY_OPTIONS_NAME" Language="pt_BR"><Text>Todas as opções de tela e resolução</Text></Replace>
+        <Replace Tag="LOC_MOD_ALL_DISPLAY_OPTIONS_DESCRIPTION" Language="pt_BR"><Text>Traz de volta as opções de tela que o jogo esconde: todas as resoluções até a nativa da sua tela, a faixa completa de escala da interface do motor (50-200%), uma chave para o dimensionamento automático e predefinições de um clique adaptadas ao seu dispositivo para recuperar o visual “mais afastado”.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_GROUP_ALLDISPLAYOPTIONS" Language="pt_BR"><Text>Todas as opções de tela e resolução</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET" Language="pt_BR"><Text>Predefinição de tela</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET_INFO" Language="pt_BR"><Text>Predefinições de um clique ajustadas à sua tela. Escolha uma e pressione Confirmar. Os outros controles abaixo se atualizam na próxima vez que você abrir as opções.</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET_DETECTED" Language="pt_BR"><Text>Tela detectada: {1_Display}. Recomendado para um visual “mais afastado”: resolução nativa com escala da interface em {2_Scale}%. Aplique uma predefinição e depois confirme.</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET_CURRENT" Language="pt_BR"><Text>Configurações atuais</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET_RECOMMENDED" Language="pt_BR"><Text>Recomendado para esta tela</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET_MAX_ZOOM" Language="pt_BR"><Text>Afastamento máximo (nativa, interface em 60%)</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET_DEFAULT" Language="pt_BR"><Text>Padrão do jogo (interface em 100%, dimensionamento automático ligado)</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_RESOLUTION" Language="pt_BR"><Text>Resolução (todos os modos)</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_RESOLUTION_INFO" Language="pt_BR"><Text>Todas as resoluções padrão até o tamanho nativo da sua tela, incluindo os modos que a lista suspensa do jogo deixa de fora. Resolução maior = mais mapa na tela (visual “mais afastado”). Vale ao confirmar.</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_RESOLUTION_NATIVE" Language="pt_BR"><Text>(nativa)</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_UI_SCALE" Language="pt_BR"><Text>Escala global da interface</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_UI_SCALE_INFO" Language="pt_BR"><Text>Tamanho de toda a interface, de 50% a 200% (a faixa completa do motor; o controle deslizante do jogo só vai de 50 a 125%). Menor = HUD menor e mais mapa visível. Ajustar este valor desliga o dimensionamento automático para que o valor seja respeitado. Vale ao confirmar.</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_AUTO_SCALE" Language="pt_BR"><Text>Dimensionamento automático da interface</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_AUTO_SCALE_INFO" Language="pt_BR"><Text>Quando ligado, o jogo ajusta sozinho o tamanho da interface à sua tela (o comportamento desde o patch, que pode parecer “ampliado”). Desligue para controlar o tamanho você mesmo com a escala global da interface acima.</Text></Replace>
+    </LocalizedText>
+</Database>

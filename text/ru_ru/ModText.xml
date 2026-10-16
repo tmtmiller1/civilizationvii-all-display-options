@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Database>
+    <LocalizedText>
+        <Replace Tag="LOC_MOD_ALL_DISPLAY_OPTIONS_NAME" Language="ru_RU"><Text>Все настройки экрана и разрешения</Text></Replace>
+        <Replace Tag="LOC_MOD_ALL_DISPLAY_OPTIONS_DESCRIPTION" Language="ru_RU"><Text>Возвращает настройки экрана, которые игра скрывает: все разрешения вплоть до родного разрешения вашего экрана, полный диапазон масштаба интерфейса движка (50-200%), переключатель автоматического масштабирования и подобранные под устройство предустановки в один щелчок, чтобы вернуть «более отдалённый» вид.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_GROUP_ALLDISPLAYOPTIONS" Language="ru_RU"><Text>Все настройки экрана и разрешения</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET" Language="ru_RU"><Text>Предустановка экрана</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET_INFO" Language="ru_RU"><Text>Предустановки в один щелчок, подобранные под ваш экран. Выберите одну и нажмите «Подтвердить». Остальные настройки ниже обновятся при следующем открытии настроек.</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET_DETECTED" Language="ru_RU"><Text>Обнаружен экран: {1_Display}. Рекомендуется для «более отдалённого» вида: родное разрешение и масштаб интерфейса {2_Scale}%. Примените предустановку, затем подтвердите.</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET_CURRENT" Language="ru_RU"><Text>Текущие настройки</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET_RECOMMENDED" Language="ru_RU"><Text>Рекомендуется для этого экрана</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET_MAX_ZOOM" Language="ru_RU"><Text>Максимальное отдаление (родное, интерфейс 60%)</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET_DEFAULT" Language="ru_RU"><Text>По умолчанию в игре (интерфейс 100%, автомасштабирование вкл.)</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_RESOLUTION" Language="ru_RU"><Text>Разрешение (все режимы)</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_RESOLUTION_INFO" Language="ru_RU"><Text>Все стандартные разрешения вплоть до родного размера вашего экрана, включая режимы, которых нет в выпадающем списке игры. Выше разрешение = больше карты на экране («более отдалённый» вид). Применяется после подтверждения.</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_RESOLUTION_NATIVE" Language="ru_RU"><Text>(родное)</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_UI_SCALE" Language="ru_RU"><Text>Общий масштаб интерфейса</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_UI_SCALE_INFO" Language="ru_RU"><Text>Размер всего интерфейса от 50% до 200% (полный диапазон движка; встроенный ползунок доходит только до 50-125%). Меньше = меньше HUD и больше видимой карты. При изменении этого значения автоматическое масштабирование выключается, чтобы значение применялось. Применяется после подтверждения.</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_AUTO_SCALE" Language="ru_RU"><Text>Автомасштабирование интерфейса</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_AUTO_SCALE_INFO" Language="ru_RU"><Text>Когда оно включено, игра сама подбирает размер интерфейса под ваш экран (поведение после патча, из-за которого всё может выглядеть «увеличенным»). Выключите его, чтобы задавать размер самостоятельно с помощью общего масштаба интерфейса выше.</Text></Replace>
+    </LocalizedText>
+</Database>

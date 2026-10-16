@@ -3,21 +3,26 @@
 // Registers the mod's options (preset, resolution, UI scale, auto-scale) under
 // the shared "Mods" category of the Options screen.
 //
-// On Confirm the options screen calls Options.commitOptions() with no category.
-// Its default branch applies graphics options and fires UIGlobalScaleChanged,
-// so both the resolution and the scale changes below take effect through the
-// normal Confirm button. See core/ui/options/screen-options.js.
+// On Confirm the Options screen calls Options.commitOptions() with no category,
+// which applies the pending graphics options, saves the user config and reloads
+// the interface when the reload count is above zero (not in a multiplayer game).
+// Unless a reload or restart prompt took over, the screen then fires
+// UIGlobalScaleChanged. See core/ui/options/screen-options.js (onConfirmOptions).
 
 import { CategoryType, OptionType, Options } from "/core/ui/options/model-options.js";
 import "/all-display-options/ui/all-display-options-mod-options.js";
 import {
   applyResolution,
+  autoScaleReload,
   buildPresetItems,
   buildResolutionItems,
   getNativeResolution,
+  readAutoScale,
   readGlobalScale,
   recommendedScaleFor,
+  resolutionReload,
   safe,
+  scaleReload,
   SCALE_MAX,
   SCALE_MIN,
   setGlobalScale,
@@ -34,7 +39,9 @@ const GROUP = "alldisplayoptions";
 function registerPreset() {
   const native = getNativeResolution();
   const rec = recommendedScaleFor(native);
-  const nativeLabel = native ? `${native.i} x ${native.j}` : "Auto";
+  const nativeLabel = native
+    ? `${native.i} x ${native.j}`
+    : safe(() => Locale.compose("LOC_OPTIONS_GFX_AUTO"), "Auto");
   const items = buildPresetItems(native, rec);
   Options.addOption({
     category: CategoryType.Mods,
@@ -69,6 +76,7 @@ function registerResolution() {
     type: OptionType.Dropdown,
     id: "all-display-options-resolution",
     initListener: (/** @type {*} */ info) => {
+      resolutionReload.start();
       info.selectedItemIndex = 0;
       const cur = safe(() => Options.graphicsOptions?.resolution, null);
       if (cur && cur.i > 0 && cur.j > 0) {
@@ -103,6 +111,7 @@ function registerGlobalScale() {
     max: SCALE_MAX,
     steps: (SCALE_MAX - SCALE_MIN) / 5, // 5% increments
     initListener: (/** @type {*} */ info) => {
+      scaleReload.start();
       const v = readGlobalScale();
       info.currentValue = v;
       info.formattedValue = `${v}%`;
@@ -124,15 +133,13 @@ function registerAutoScale() {
     type: OptionType.Checkbox,
     id: "all-display-options-auto-scale",
     initListener: (/** @type {*} */ info) => {
-      info.currentValue = !!safe(() => Configuration.getUser().uiAutoScale, true);
+      autoScaleReload.start();
+      info.currentValue = readAutoScale();
     },
     updateListener: (/** @type {*} */ info, /** @type {*} */ value) => {
-      // bump the reload count only on a real change, or re-affirming the current
-      // value would leave a stale "reload required"
-      const changed = !!value !== !!info.currentValue;
       safe(() => Configuration.getUser().setUiAutoScale(!!value));
       info.currentValue = !!value;
-      if (changed) Options.needReloadRefCount += 1;
+      autoScaleReload.sync();
     },
     label: "LOC_ALL_DISPLAY_OPTIONS_AUTO_SCALE",
     description: "LOC_ALL_DISPLAY_OPTIONS_AUTO_SCALE_INFO"

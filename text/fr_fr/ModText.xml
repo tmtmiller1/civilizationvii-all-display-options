@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Database>
+    <LocalizedText>
+        <Replace Tag="LOC_MOD_ALL_DISPLAY_OPTIONS_NAME" Language="fr_FR"><Text>Toutes les options d'affichage et de résolution</Text></Replace>
+        <Replace Tag="LOC_MOD_ALL_DISPLAY_OPTIONS_DESCRIPTION" Language="fr_FR"><Text>Rétablit les choix d'affichage que le jeu masque : toutes les résolutions jusqu'à la résolution native de votre écran, toute la plage d'échelle de l'interface du moteur (50-200%), un interrupteur pour la mise à l'échelle automatique et des préréglages en un clic adaptés à votre appareil pour retrouver la vue « plus dézoomée ».</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_GROUP_ALLDISPLAYOPTIONS" Language="fr_FR"><Text>Toutes les options d'affichage et de résolution</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET" Language="fr_FR"><Text>Préréglage d'affichage</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET_INFO" Language="fr_FR"><Text>Préréglages en un clic adaptés à votre écran. Choisissez-en un, puis appuyez sur Confirmer. Les autres réglages ci-dessous se mettent à jour la prochaine fois que vous ouvrez les options.</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET_DETECTED" Language="fr_FR"><Text>Écran détecté : {1_Display}. Recommandé pour une vue « plus dézoomée » : résolution native avec une échelle d'interface de {2_Scale}%. Appliquez un préréglage, puis confirmez.</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET_CURRENT" Language="fr_FR"><Text>Réglages actuels</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET_RECOMMENDED" Language="fr_FR"><Text>Recommandé pour cet écran</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET_MAX_ZOOM" Language="fr_FR"><Text>Dézoom maximal (native, interface à 60%)</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET_DEFAULT" Language="fr_FR"><Text>Par défaut du jeu (interface à 100%, mise à l'échelle auto activée)</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_RESOLUTION" Language="fr_FR"><Text>Résolution (tous les modes)</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_RESOLUTION_INFO" Language="fr_FR"><Text>Toutes les résolutions standard jusqu'à la taille native de votre écran, y compris les modes absents du menu déroulant du jeu. Résolution plus élevée = plus de carte à l'écran (vue « plus dézoomée »). Prend effet à la confirmation.</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_RESOLUTION_NATIVE" Language="fr_FR"><Text>(native)</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_UI_SCALE" Language="fr_FR"><Text>Échelle globale de l'interface</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_UI_SCALE_INFO" Language="fr_FR"><Text>Taille de toute l'interface, de 50% à 200% (toute la plage du moteur ; le curseur intégré ne va que de 50 à 125%). Plus bas = HUD plus petit et plus de carte visible. Régler cette valeur désactive la mise à l'échelle automatique pour qu'elle soit respectée. Prend effet à la confirmation.</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_AUTO_SCALE" Language="fr_FR"><Text>Mise à l'échelle automatique de l'interface</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_AUTO_SCALE_INFO" Language="fr_FR"><Text>Si elle est activée, le jeu adapte automatiquement la taille de l'interface à votre écran (le comportement depuis le patch, qui peut donner une impression de « zoom avant »). Désactivez-la pour régler vous-même la taille avec l'échelle globale de l'interface ci-dessus.</Text></Replace>
+    </LocalizedText>
+</Database>

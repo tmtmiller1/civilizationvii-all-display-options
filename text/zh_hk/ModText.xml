@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Database>
+    <LocalizedText>
+        <Replace Tag="LOC_MOD_ALL_DISPLAY_OPTIONS_NAME" Language="zh_Hant_HK"><Text>全部顯示與解析度選項</Text></Replace>
+        <Replace Tag="LOC_MOD_ALL_DISPLAY_OPTIONS_DESCRIPTION" Language="zh_Hant_HK"><Text>找回遊戲隱藏的顯示設定：最高到螢幕原生解析度的所有解析度、引擎完整的UI縮放範圍（50-200%）、UI自動縮放開關，以及依裝置一鍵套用的預設，讓畫面恢復「看得更遠」的效果。</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_GROUP_ALLDISPLAYOPTIONS" Language="zh_Hant_HK"><Text>全部顯示與解析度選項</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET" Language="zh_Hant_HK"><Text>顯示預設</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET_INFO" Language="zh_Hant_HK"><Text>依你的螢幕調整的一鍵預設。選擇一個後按「確認變更」。下方的其他選項會在你下次開啟選項時更新。</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET_DETECTED" Language="zh_Hant_HK"><Text>偵測到的螢幕：{1_Display}。想要「看得更遠」，建議：原生解析度，UI縮放{2_Scale}%。套用一個預設，然後確認。</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET_CURRENT" Language="zh_Hant_HK"><Text>目前設定</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET_RECOMMENDED" Language="zh_Hant_HK"><Text>此螢幕的建議設定</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET_MAX_ZOOM" Language="zh_Hant_HK"><Text>最遠視角（原生，UI 60%）</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET_DEFAULT" Language="zh_Hant_HK"><Text>遊戲預設（UI 100%，自動縮放開啟）</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_RESOLUTION" Language="zh_Hant_HK"><Text>解析度（全部模式）</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_RESOLUTION_INFO" Language="zh_Hant_HK"><Text>最高到螢幕原生尺寸的所有標準解析度，包括遊戲下拉選單中沒有的模式。解析度越高，螢幕上顯示的地圖越多（「看得更遠」）。確認後生效。</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_RESOLUTION_NATIVE" Language="zh_Hant_HK"><Text>（原生）</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_UI_SCALE" Language="zh_Hant_HK"><Text>全域UI縮放</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_UI_SCALE_INFO" Language="zh_Hant_HK"><Text>整個介面的大小，範圍50%到200%（引擎的完整範圍；遊戲內建的滑桿只能調到50-125%）。數值越低，HUD越小，能看到的地圖越多。設定此項會關閉自動縮放，以便採用這個數值。確認後生效。</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_AUTO_SCALE" Language="zh_Hant_HK"><Text>UI自動縮放</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_AUTO_SCALE_INFO" Language="zh_Hant_HK"><Text>開啟時，遊戲會依你的螢幕自動調整UI大小（這是更新檔後的行為，可能顯得「放大了」）。關閉後，可以用上方的全域UI縮放自己控制大小。</Text></Replace>
+    </LocalizedText>
+</Database>

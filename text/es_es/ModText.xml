@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Database>
+    <LocalizedText>
+        <Replace Tag="LOC_MOD_ALL_DISPLAY_OPTIONS_NAME" Language="es_ES"><Text>Todas las opciones de pantalla y resolución</Text></Replace>
+        <Replace Tag="LOC_MOD_ALL_DISPLAY_OPTIONS_DESCRIPTION" Language="es_ES"><Text>Recupera opciones de pantalla que el juego oculta: todas las resoluciones hasta la nativa de tu pantalla, el rango completo de escala de la IU del motor (50-200%), un interruptor para el escalado automático y ajustes preestablecidos de un clic adaptados a tu dispositivo para recuperar la vista «más alejada».</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_GROUP_ALLDISPLAYOPTIONS" Language="es_ES"><Text>Todas las opciones de pantalla y resolución</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET" Language="es_ES"><Text>Ajuste preestablecido de pantalla</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET_INFO" Language="es_ES"><Text>Ajustes preestablecidos de un clic adaptados a tu pantalla. Elige uno y pulsa Confirmar. Los demás controles de abajo se actualizan la próxima vez que abras las opciones.</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET_DETECTED" Language="es_ES"><Text>Pantalla detectada: {1_Display}. Recomendado para una vista «más alejada»: resolución nativa con la escala de la IU al {2_Scale}%. Aplica un ajuste preestablecido y pulsa Confirmar.</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET_CURRENT" Language="es_ES"><Text>Ajustes actuales</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET_RECOMMENDED" Language="es_ES"><Text>Recomendado para esta pantalla</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET_MAX_ZOOM" Language="es_ES"><Text>Máximo alejamiento (nativa, IU al 60%)</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET_DEFAULT" Language="es_ES"><Text>Valores del juego (IU al 100%, escalado automático activado)</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_RESOLUTION" Language="es_ES"><Text>Resolución (todos los modos)</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_RESOLUTION_INFO" Language="es_ES"><Text>Todas las resoluciones estándar hasta el tamaño nativo de tu pantalla, incluidos los modos que el menú desplegable del juego omite. Más resolución = más mapa en pantalla (vista «más alejada»). Se aplica al confirmar.</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_RESOLUTION_NATIVE" Language="es_ES"><Text>(nativa)</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_UI_SCALE" Language="es_ES"><Text>Escala global de la IU</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_UI_SCALE_INFO" Language="es_ES"><Text>Tamaño de toda la interfaz, del 50% al 200% (el rango completo del motor; el control deslizante del juego solo llega al 50-125%). Menos = HUD más pequeño y más mapa visible. Al ajustarlo se desactiva el escalado automático para que se respete el valor. Se aplica al confirmar.</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_AUTO_SCALE" Language="es_ES"><Text>Escalado automático de la IU</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_AUTO_SCALE_INFO" Language="es_ES"><Text>Si está activado, el juego ajusta automáticamente el tamaño de la IU a tu pantalla (el comportamiento posterior al parche, que puede parecer «ampliado»). Desactívalo para controlar tú el tamaño con la escala global de la IU de arriba.</Text></Replace>
+    </LocalizedText>
+</Database>

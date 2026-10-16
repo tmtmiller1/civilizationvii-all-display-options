@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Database>
+    <LocalizedText>
+        <Replace Tag="LOC_MOD_ALL_DISPLAY_OPTIONS_NAME" Language="de_DE"><Text>Alle Anzeige- und Auflösungsoptionen</Text></Replace>
+        <Replace Tag="LOC_MOD_ALL_DISPLAY_OPTIONS_DESCRIPTION" Language="de_DE"><Text>Holt Anzeigeoptionen zurück, die das Spiel verbirgt: jede Auflösung bis zur nativen Auflösung Eures Bildschirms, den vollen Skalierungsbereich der Engine für die Benutzeroberfläche (50-200%), einen Schalter für die automatische Skalierung und auf Euer Gerät abgestimmte Voreinstellungen mit einem Klick, um die „weiter herausgezoomte“ Ansicht zurückzubekommen.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_GROUP_ALLDISPLAYOPTIONS" Language="de_DE"><Text>Alle Anzeige- und Auflösungsoptionen</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET" Language="de_DE"><Text>Anzeige-Voreinstellung</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET_INFO" Language="de_DE"><Text>Voreinstellungen mit einem Klick, abgestimmt auf Euren Bildschirm. Wählt eine aus und drückt dann auf „Bestätigen“. Die übrigen Regler darunter zeigen die neuen Werte, wenn Ihr die Optionen das nächste Mal öffnet.</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET_DETECTED" Language="de_DE"><Text>Erkannter Bildschirm: {1_Display}. Empfohlen für eine „weiter herausgezoomte“ Ansicht: native Auflösung mit {2_Scale}% UI-Skalierung. Wendet eine Voreinstellung an und drückt dann auf „Bestätigen“.</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET_CURRENT" Language="de_DE"><Text>Aktuelle Einstellungen</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET_RECOMMENDED" Language="de_DE"><Text>Empfohlen für diesen Bildschirm</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET_MAX_ZOOM" Language="de_DE"><Text>Maximal herausgezoomt (nativ, 60% UI)</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET_DEFAULT" Language="de_DE"><Text>Spielstandard (100% UI, automatische Skalierung an)</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_RESOLUTION" Language="de_DE"><Text>Auflösung (alle Modi)</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_RESOLUTION_INFO" Language="de_DE"><Text>Jede Standardauflösung bis zur nativen Größe Eures Bildschirms, auch Modi, die im Auswahlmenü des Spiels fehlen. Höhere Auflösung = mehr von der Karte auf dem Bildschirm („weiter herausgezoomt“). Gilt nach „Bestätigen“.</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_RESOLUTION_NATIVE" Language="de_DE"><Text>(nativ)</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_UI_SCALE" Language="de_DE"><Text>Globale UI-Skalierung</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_UI_SCALE_INFO" Language="de_DE"><Text>Größe der gesamten Benutzeroberfläche von 50% bis 200% (der volle Bereich der Engine; der eingebaute Regler reicht nur von 50-125%). Niedriger = kleineres HUD und mehr sichtbare Karte. Wenn Ihr diesen Wert setzt, wird die automatische Skalierung ausgeschaltet, damit er gilt. Gilt nach „Bestätigen“.</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_AUTO_SCALE" Language="de_DE"><Text>Automatische UI-Skalierung</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_AUTO_SCALE_INFO" Language="de_DE"><Text>Wenn sie an ist, passt das Spiel die Größe der Benutzeroberfläche automatisch an Euren Bildschirm an (das Verhalten seit dem Patch, das „hineingezoomt“ wirken kann). Schaltet sie aus, um die Größe selbst mit der globalen UI-Skalierung oben festzulegen.</Text></Replace>
+    </LocalizedText>
+</Database>

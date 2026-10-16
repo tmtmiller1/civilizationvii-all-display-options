@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Database>
+    <LocalizedText>
+        <Replace Tag="LOC_MOD_ALL_DISPLAY_OPTIONS_NAME" Language="ja_JP"><Text>すべての表示・解像度オプション</Text></Replace>
+        <Replace Tag="LOC_MOD_ALL_DISPLAY_OPTIONS_DESCRIPTION" Language="ja_JP"><Text>ゲームが隠している表示設定を取り戻します。画面のネイティブ解像度までのすべての解像度、エンジン本来のUIスケールの全範囲（50～200%）、UI自動スケーリングの切り替え、デバイスに合わせたワンクリックのプリセットで、「もっと引いた」見た目に戻せます。</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_GROUP_ALLDISPLAYOPTIONS" Language="ja_JP"><Text>すべての表示・解像度オプション</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET" Language="ja_JP"><Text>表示プリセット</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET_INFO" Language="ja_JP"><Text>お使いの画面に合わせたワンクリックのプリセットです。どれかを選んで「変更を確認」を押してください。下のほかの設定は、次にオプションを開いたときに更新されます。</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET_DETECTED" Language="ja_JP"><Text>検出された画面：{1_Display}。「もっと引いた」表示のおすすめ：ネイティブ解像度でUIスケール{2_Scale}%。プリセットを適用してから確認してください。</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET_CURRENT" Language="ja_JP"><Text>現在の設定</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET_RECOMMENDED" Language="ja_JP"><Text>この画面のおすすめ</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET_MAX_ZOOM" Language="ja_JP"><Text>最大ズームアウト（ネイティブ、UI 60%）</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET_DEFAULT" Language="ja_JP"><Text>ゲームの初期設定（UI 100%、自動スケーリング オン）</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_RESOLUTION" Language="ja_JP"><Text>解像度（すべてのモード）</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_RESOLUTION_INFO" Language="ja_JP"><Text>画面のネイティブサイズまでのすべての標準解像度で、ゲームのドロップダウンにないモードも含みます。解像度が高いほど、画面に映るマップが広くなります（「もっと引いた」表示）。確認すると反映されます。</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_RESOLUTION_NATIVE" Language="ja_JP"><Text>（ネイティブ）</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_UI_SCALE" Language="ja_JP"><Text>グローバルUIスケール</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_UI_SCALE_INFO" Language="ja_JP"><Text>インターフェース全体のサイズを50%から200%まで設定します（エンジン本来の全範囲です。ゲーム内蔵のスライダーは50～125%までです）。低いほどHUDが小さくなり、マップが広く見えます。この値を設定すると、値が反映されるように自動スケーリングがオフになります。確認すると反映されます。</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_AUTO_SCALE" Language="ja_JP"><Text>UI自動スケーリング</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_AUTO_SCALE_INFO" Language="ja_JP"><Text>オンにすると、ゲームが画面に合わせてUIのサイズを自動で調整します（パッチ後の挙動で、「拡大されすぎ」に見えることがあります）。オフにすると、上のグローバルUIスケールでサイズを自分で決められます。</Text></Replace>
+    </LocalizedText>
+</Database>

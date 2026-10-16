@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Database>
+    <LocalizedText>
+        <Replace Tag="LOC_MOD_ALL_DISPLAY_OPTIONS_NAME" Language="pl_PL"><Text>Wszystkie opcje ekranu i rozdzielczości</Text></Replace>
+        <Replace Tag="LOC_MOD_ALL_DISPLAY_OPTIONS_DESCRIPTION" Language="pl_PL"><Text>Przywraca opcje wyświetlania, które gra ukrywa: każdą rozdzielczość aż do natywnej rozdzielczości twojego ekranu, pełny zakres skalowania interfejsu silnika (50-200%), przełącznik automatycznego skalowania i dopasowane do urządzenia ustawienia wstępne jednym kliknięciem, żeby odzyskać „bardziej oddalony” widok.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_GROUP_ALLDISPLAYOPTIONS" Language="pl_PL"><Text>Wszystkie opcje ekranu i rozdzielczości</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET" Language="pl_PL"><Text>Ustawienie wstępne ekranu</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET_INFO" Language="pl_PL"><Text>Ustawienia wstępne jednym kliknięciem, dopasowane do twojego ekranu. Wybierz jedno i naciśnij Potwierdź zmiany. Pozostałe opcje poniżej odświeżą się przy następnym otwarciu opcji.</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET_DETECTED" Language="pl_PL"><Text>Wykryty ekran: {1_Display}. Zalecane dla „bardziej oddalonego” widoku: natywna rozdzielczość przy skali interfejsu {2_Scale}%. Zastosuj ustawienie wstępne, a potem potwierdź.</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET_CURRENT" Language="pl_PL"><Text>Obecne ustawienia</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET_RECOMMENDED" Language="pl_PL"><Text>Zalecane dla tego ekranu</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET_MAX_ZOOM" Language="pl_PL"><Text>Maksymalne oddalenie (natywna, interfejs 60%)</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET_DEFAULT" Language="pl_PL"><Text>Domyślne ustawienia gry (interfejs 100%, automatyczne skalowanie wł.)</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_RESOLUTION" Language="pl_PL"><Text>Rozdzielczość (wszystkie tryby)</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_RESOLUTION_INFO" Language="pl_PL"><Text>Każda standardowa rozdzielczość aż do natywnego rozmiaru twojego ekranu, także tryby, których brakuje na liście rozwijanej gry. Wyższa rozdzielczość = więcej mapy na ekranie („bardziej oddalony” widok). Działa po potwierdzeniu.</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_RESOLUTION_NATIVE" Language="pl_PL"><Text>(natywna)</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_UI_SCALE" Language="pl_PL"><Text>Globalna skala interfejsu</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_UI_SCALE_INFO" Language="pl_PL"><Text>Rozmiar całego interfejsu od 50% do 200% (pełny zakres silnika; wbudowany suwak sięga tylko 50-125%). Niżej = mniejszy HUD i więcej widocznej mapy. Ustawienie tej wartości wyłącza automatyczne skalowanie, żeby wartość była respektowana. Działa po potwierdzeniu.</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_AUTO_SCALE" Language="pl_PL"><Text>Automatyczne skalowanie interfejsu</Text></Replace>
+        <Replace Tag="LOC_ALL_DISPLAY_OPTIONS_AUTO_SCALE_INFO" Language="pl_PL"><Text>Gdy jest włączone, gra sama dopasowuje rozmiar interfejsu do twojego ekranu (zachowanie od czasu łatki, które może wyglądać na „przybliżone”). Wyłącz je, żeby samemu ustawić rozmiar globalną skalą interfejsu powyżej.</Text></Replace>
+    </LocalizedText>
+</Database>

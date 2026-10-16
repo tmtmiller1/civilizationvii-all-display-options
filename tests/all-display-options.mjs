@@ -89,8 +89,10 @@ for (const o of byId.values()) {
 const resOpt = byId.get("all-display-options-resolution");
 assert.equal(resOpt.dropdownItems[0].label, "LOC_OPTIONS_GFX_AUTO");
 assert.ok(
-  resOpt.dropdownItems.some((/** @type {*} */ it) => it.label.includes("(native)")),
-  "native mode should be tagged"
+  resOpt.dropdownItems.some(
+    (/** @type {*} */ it) => it.label === "2560 x 1440  LOC_ALL_DISPLAY_OPTIONS_RESOLUTION_NATIVE"
+  ),
+  "native mode should be tagged with the translated word"
 );
 assert.ok(
   !resOpt.dropdownItems.some((/** @type {*} */ it) => it.label.startsWith("3840")),
@@ -174,11 +176,11 @@ const presetB = byId.get("all-display-options-preset");
 presetB.updateListener({}, 1);
 presetB.updateListener({}, 2);
 // With no native cap, the curated 16:9/16:10 list is still offered (Auto + curated modes), and
-// nothing is tagged "(native)" since the panel size is unknown.
+// nothing is tagged native since the panel size is unknown.
 assert.ok(resOptB.dropdownItems.length > 1, "curated modes are offered even without a native cap");
 assert.equal(resOptB.dropdownItems[0].label, "LOC_OPTIONS_GFX_AUTO");
 assert.ok(
-  !resOptB.dropdownItems.some((/** @type {*} */ it) => it.label.includes("(native)")),
+  !resOptB.dropdownItems.some((/** @type {*} */ it) => it.label.includes("NATIVE")),
   "no native tag when the panel size is unknown"
 );
 
@@ -210,6 +212,14 @@ localeThrows = true;
 info = {};
 byId.get("all-display-options-preset").initListener(info); // both compose calls throw → raw tag fallback
 assert.equal(info.description, "LOC_ALL_DISPLAY_OPTIONS_PRESET_INFO");
+// with no Locale the native tag falls back to the English word
+byId = registerWith({ resolutions: [{ i: 1920, j: 1080 }] }, { i: 0, j: 0 });
+assert.ok(
+  byId.get("all-display-options-resolution").dropdownItems.some(
+    (/** @type {*} */ it) => it.label === "1920 x 1080  (native)"
+  )
+);
+registerWith(undefined, undefined); // and the unknown-panel label falls back to "Auto"
 localeThrows = false;
 
 // 6. applyResolution with no pending graphics target (the `!target` early return).

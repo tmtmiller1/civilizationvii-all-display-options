@@ -25,7 +25,7 @@
             <Text>Detected display: {1_Display}. Recommended for "more zoomed out": native resolution at {2_Scale}% UI scale. Apply a preset, then Confirm.</Text>
         </Row>
         <Row Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET_CURRENT">
-            <Text>Current (no change)</Text>
+            <Text>Current settings</Text>
         </Row>
         <Row Tag="LOC_ALL_DISPLAY_OPTIONS_PRESET_RECOMMENDED">
             <Text>Recommended for this display</Text>
@@ -43,6 +43,10 @@
         </Row>
         <Row Tag="LOC_ALL_DISPLAY_OPTIONS_RESOLUTION_INFO">
             <Text>Every standard resolution up to your display's native size, including modes the base game's dropdown leaves out. Higher resolution = more of the map on screen ("more zoomed out"). Takes effect on Confirm.</Text>
+        </Row>
+        <!-- Follows the panel's own mode in the list, after the numbers. -->
+        <Row Tag="LOC_ALL_DISPLAY_OPTIONS_RESOLUTION_NATIVE">
+            <Text>(native)</Text>
         </Row>
 
         <!-- Global UI scale slider -->

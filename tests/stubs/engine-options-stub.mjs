@@ -41,6 +41,16 @@ export const Options = {
   graphicsOptions: { resolution: { i: 0, j: 0 } },
   /** Engine field: bumped to flag a UI reload is needed. */
   needReloadRefCount: 0,
+  /** Test-only: the interface reloads commitOptions would have done. */
+  __reloads: 0,
+  isUIReloadRequired() {
+    return this.needReloadRefCount > 0;
+  },
+  /** The base game's Confirm (model-options.js commitOptions): reload if one is due, then zero the count. */
+  commitOptions() {
+    if (this.isUIReloadRequired()) this.__reloads += 1;
+    this.needReloadRefCount = 0;
+  },
   /** @param {any} spec */
   addOption(spec) {
     registered.push(spec);
