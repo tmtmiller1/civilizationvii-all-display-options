@@ -20,6 +20,35 @@ after every write (`applyResolution` `:113`, `setGlobalScale` `:126-127`, the Ga
 auto-scale checkbox in `ui/all-display-options.js:142`) and `start()` runs in each option's initListener
 (`ui/all-display-options.js:79`, `:114`, `:136`). `tests/reload-count.mjs` covers the Confirm path.
 
+Watched on the released 1.1.0 build, 2026-10-15 22:52 (Workshop 3751137250, which `deploy --prove` showed is the copy
+the game serves and matches commit 08db0d3; usual set, Antiquity lab game, seed 4242, turn 1): scale 90 -> 95 put the
+count at 1, back to 90 put it at 0; auto-scale on put it at 1, off at 0; Confirm closed Options with no prompt and the
+page wasn't reloaded. Run log: `tools/plans/overnight-watch-run-log.md`, L1. The ADO-only side is below.
+
+Watched with ADO alone, 2026-10-16 (watch run 2 block 1 V1, run `~/.tower-bench/runs/2026-10-16T18-26-06`; game 1.5.0,
+windowed 1600x1000, every other user mod off, ADO's `Mods/` copy with its working tree deployed; Antiquity lab game,
+seed 4242). Options was driven through its own components: the slider arrows with `action-activate`,
+`#options-confirm` and `#options-cancel`, and the option objects' updateListener for the auto-scale box and the
+resolution dropdown.
+
+- Away and back: one step right put the scale at 95 and the count at 1; one step left put them back at 90 and 0.
+  Confirm closed the screen with no prompt.
+- One step to 95 and Confirm: the game's "Reload?" prompt came up; Continue reloaded the UI at 95 (root font size
+  16.2px to 17.1px).
+- Cancel, run last: scale 100, auto-scale on and resolution 3024x1964 (count 3). Cancel asked "Are you sure you want
+  to revert any changes that were made?"; OK put back 95, auto-scale off and 1600x1000, read at 1, 3 and 6 s from
+  lines the probe wrote to `UI.log` (Cancel rewrites `AppOptions.txt`, and after that the bench refuses evals).
+
+So the ADO-alone side is watched: the slider resizes the UI on Confirm, Cancel puts back the scale, auto-scale and
+resolution, and away-and-back closes with no prompt. Captures `working_screenshots/watch2-block1/V1-ado-*.png`.
+
+Translations, same night (1.1.0 as served, usual set, one lab game per language): the four rows and the "(native)"
+tag on the resolution list read in Japanese ("表示プリセット", "解像度（すべてのモード）", "グローバルUIスケール",
+"UI自動スケーリング", "（ネイティブ）"), German ("Anzeige-Voreinstellung", "Auflösung (alle Modi)", "(nativ)") and
+Polish ("Ustawienie wstępne ekranu", "Rozdzielczość (wszystkie tryby)", "(natywna)"), with no raw `LOC_` text on the
+Options screen; the Japanese group header "すべての表示・解像度オプション" in the capture
+`working_screenshots/overnight-2026-10-15/L2-ja-ado-options-rows.png`. The other eight languages weren't run.
+
 **Sites (before the fix):** `setGlobalScale` and the auto-scale updateListener did `Options.needReloadRefCount += 1`
 unconditionally and never decremented; `applyResolution` bumped on each change and the Game default preset always.
 **Failure scenario:** nudge the UI-scale slider and drag it back to the original value, or toggle auto-scale on then
@@ -106,3 +135,6 @@ recommended) rather than crashing.
    they return. All calls are already `safe()`-wrapped, so this only confirms correctness; the code changes only if a
    shape is wrong.
 **Verify:** live probe of the Options screen confirms the property names resolve and Cancel restores the prior scale.
+
+Cancel watched with ADO alone, 2026-10-16 (block 1 V1): it put back the scale, auto-scale and resolution. The record
+is under the first item above.
