@@ -7,6 +7,10 @@ generated from the matching section below by `release.sh`.
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-10-15
+
+Eleven more languages, and a change you put back before confirming no longer asks for a reload.
+
 ### Added
 - The options are in German, Spanish, French, Italian, Japanese, Korean, Polish, Brazilian Portuguese, Russian, and
   Simplified and Traditional Chinese, using the game's own words for its terms. The "(native)" tag in the resolution
