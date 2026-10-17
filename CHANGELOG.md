@@ -7,6 +7,10 @@ generated from the matching section below by `release.sh`.
 
 ## [Unreleased]
 
+- Carries Civilopedia History Corrections. With Civilopedia Expanded: Independents on, six East Asian history pages
+  in the Civilopedia (Goguryeo, the Oirat, two Ryukyu pages, Nanzhao and Balhae) give each side where historians in
+  different countries disagree, and a few factual errors are fixed. With it off, the game's pages stay as they are.
+
 ## [1.1.0] - 2026-10-15
 
 Eleven more languages, and a change you put back before confirming no longer asks for a reload.
